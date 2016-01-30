@@ -5,14 +5,33 @@
 #'
 #' @param list.est
 #'
-#' @return
+#' @return data.frame
 #' @export
+#' @importFrom reshape2 melt
 #'
 #' @examples
+#'  list.dia<-  html2list("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/ene15/nse150129.htm")
+#'  df.dia  <- list2df(list.dia)
+#'
 list2df  <- function(list.est) {
+  resu <- data.frame(provincia=as.character(),
+                     municipio=as.character(),
+                     estacion=as.character(),
+                     fecha.hora=as.character(),
+                     parametro=as.character() ,
+                     medida=as.integer() )
   for (i in list.est) {
       id  <- i[[1]]
       dat <- i[[2]]
+      names(dat)[1] <- 'fecha.hora'
+      dat2 <-  melt(dat, id.var = 'fecha.hora',
+                 variable.name  = 'parametro',
+                 value.name     = 'medida')
+      dat2$provincia   <- id[1]
+      dat2$municipio   <- id[2]
+      dat2$estacion    <- id[3]
+      dat2 <-  dat2[,c(4:6,1:3)]
+      resu<-rbind(resu,dat2)
   }
   return (df.est)
 }
