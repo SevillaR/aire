@@ -2,12 +2,11 @@
 #'
 #' @param query
 #'
-#' @return
+#' @return A list of lists (each element being a station).
 #' @export
 #' @import rvest
-#' @examples
+
 html2list<-function(query){
-require(rvest)
 #query<-"http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/ene15/nse150129.htm"
 air.dat <- read_html(query)
 n_estaciones<-(length(html_nodes(air.dat, "table"))-1)/2
