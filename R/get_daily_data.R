@@ -1,21 +1,29 @@
-#' Get http address of daily report
+#' Get daily data for given dates and province(s)
 #'
 #' @param fecha Character vector with date in formart "yyyy-mm-dd" (see examples).
 #' @param provincia Character. Two first letters of province name.
 #'
-#' @return Character vector with the http address.
+#' @return List of characters with http addresses.
 #' @export
 #' @importFrom lubridate month
 #' @author F. Rodriguez-Sanchez, V. Luque
 #'
 #' @examples
 #'
-#' url_path ("2015-01-28", "gr")
+#' get_daily_data("2015-01-28", "gr")
 #'
-#' url_path ("2015-01-03", "MA")
+#' get_daily_data("2015-01-03", "MA")
 #'
-#' url_path ("2015-01-03", "Se")
+#' get_daily_data("2015-01-03", "Se")
 #'
+#' get_daily_data(c("2015-01-28", "2015-01-29"), c("se", "gr"))
+#'
+get_daily_data <- Vectorize(url_path, vectorize.args = c("fecha"),
+                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+
+
+
+## Say something brief here
 url_path <- function(fecha, provincia){
 
   meses <- c("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
@@ -24,12 +32,12 @@ url_path <- function(fecha, provincia){
 
   mes <- lubridate::month(fecha)
 
-  cat("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
+  paste0("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
       meses[mes], format(as.Date(fecha), "%y"), "/n", tolower(provincia),
-      format(as.Date(fecha), "%y%m%d"),
-      sep = ""
+      format(as.Date(fecha), "%y%m%d")
   )
 
-
-
 }
+
+
+
