@@ -13,6 +13,8 @@
 #' @details
 
 html2list<-function(query){
+if  (is.character(query)==FALSE | length(query)!=1)
+  stop("query not character")
 air.dat <- read_html(query)
 n_estaciones<-(length(html_nodes(air.dat, "table"))-1)/2
 air.list<-rep(list(NULL),n_estaciones)
