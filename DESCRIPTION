@@ -1,12 +1,15 @@
 Package: aire
 Type: Package
-Title: Analysing the air pollution data of Andalucia
+Title: Grab data on air pollution in Andalusia
 Version: 0.0.1
-Date: 2016-01-30
-Author: F. Rodriguez-Sanchez, Francisco Balao, Francisco Viciana, Rocio Aguilar, Virginia Luque
-Maintainer: F.Rodriguez-Sanchez <f.rodriguez.sanc@gmail.com>
-Description: This package can download and analyze data of air quality of Andalucia
-License: What license is it under?
+Date: 2016-02-01
+Author: Francisco Rodriguez-Sanchez, Francisco Balao, Francisco Viciana, Virginia Luque, Rocio Aguilar
+Maintainer: Francisco Rodriguez-Sanchez <f.rodriguez.sanc@gmail.com>
+Description: This package can download and retrieve daily data on air quality in Andalusia,
+    from any of the stations maintained by 'Consejeria de Medio Ambiente' (http://bit.ly/airedata).
+    The data are formatted so that they can be directly analysed with the 'openair' package.
+URL: https://github.com/SevillaR/aire
+License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Depends:
