@@ -18,6 +18,5 @@ Imports:
     lubridate,
     rvest
 Suggests:
-    openair
-
-
+    openair,
+    testthat
