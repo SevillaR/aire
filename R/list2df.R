@@ -14,12 +14,20 @@
 #'  df.dia  <- list2df(list.dia)
 #'
 list2df  <- function(list.est) {
+  ## Creamos estructura de data.frame receptor
   resu <- data.frame(provincia=as.character(),
                      municipio=as.character(),
                      estacion=as.character(),
                      fecha.hora=as.character(),
                      parametro=as.character() ,
                      medida=as.integer() )
+  #---------------------------------------------------------
+  ## El uso de rbind para rellena tabla es sencillo pero
+  ##  lento e ineficiente. Seria mejor usar otra estrategia:
+  ## 1º Calcular el tamaño de la tabla receptora
+  ## 2º Rellenar recepto con NA
+  ## 3º Ir rellenado dia a dia en la posicion correspondiente
+  ## ------------------------------------------------------------
   for (i in list.est) {
       id  <- i[[1]]
       dat <- i[[2]]
