@@ -1,15 +1,14 @@
-## Say something brief here
-url_path <- function(fecha, provincia){
+#### url_path: Get http address of daily reports ####
+
+url_path <- function(date, province){
 
   meses <- c("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
 
-  provincias <- c("al", "ca", "co", "gr", "hu", "ja", "ma", "se")
-
-  mes <- lubridate::month(fecha)
+  mes <- lubridate::month(date)
 
   paste0("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
-         meses[mes], format(as.Date(fecha), "%y"), "/n", tolower(provincia),
-         format(as.Date(fecha), "%y%m%d", ".htm")
+         meses[mes], format(as.Date(date), "%y"), "/n", tolower(province),
+         format(as.Date(date), "%y%m%d", ".htm")
   )
 
 }
