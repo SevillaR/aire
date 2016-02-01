@@ -9,7 +9,7 @@ url_path <- function(fecha, provincia){
 
   paste0("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
          meses[mes], format(as.Date(fecha), "%y"), "/n", tolower(provincia),
-         format(as.Date(fecha), "%y%m%d")
+         format(as.Date(fecha), "%y%m%d", ".htm")
   )
 
 }
