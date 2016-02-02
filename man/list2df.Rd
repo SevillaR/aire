@@ -12,10 +12,18 @@ list2df(list.est)
 \arguments{
 \item{list.est}{}
 }
+\value{
+data.frame
+}
 \description{
 list2df
 Toma una lista de lecturas de parámetros de calidad del aire
 para un dia determinado para cada estación provincial y
 lecturas de cas
+}
+\examples{
+ list.dia<-  html2list("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/ene15/nse150129.htm")
+ df.dia  <- list2df(list.dia)
+
 }
 

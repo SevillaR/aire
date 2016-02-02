@@ -33,7 +33,7 @@ url_path <- function(date, province){
 #'
 #' get_daily_data(c("2015-01-28", "2015-01-29"), c("se", "gr"))
 #'
-get_daily_data <- Vectorize(url_path, vectorize.args = c("fecha"),
+get_daily_data <- Vectorize(url_path, vectorize.args = c("date"),
                             SIMPLIFY = FALSE, USE.NAMES = FALSE)
 
 

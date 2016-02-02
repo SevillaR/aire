@@ -4,7 +4,7 @@
 \alias{get_daily_data}
 \title{Get daily data for given dates and province(s)}
 \usage{
-get_daily_data(fecha, provincia)
+get_daily_data(date, province)
 }
 \arguments{
 \item{fecha}{Character vector with date in formart "yyyy-mm-dd" (see examples).}

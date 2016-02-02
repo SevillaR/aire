@@ -2,17 +2,26 @@
 % Please edit documentation in R/html2list.R
 \name{html2list}
 \alias{html2list}
-\title{html2list}
+\title{html2list  Get}
 \usage{
 html2list(query)
 }
 \arguments{
-\item{query}{}
+\item{url}{Character. Http address of the daily report}
 }
 \value{
 A list of lists (each element being a station).
 }
-\description{
-html2list
+\examples{
+\dontrun{
+query<-"http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/ene15/nse150129.htm"
+dat29.1.15<-html2list(query)
+}
+}
+\author{
+Francisco Viciana & Francisco Balao
+}
+\seealso{
+list2df
 }
 
