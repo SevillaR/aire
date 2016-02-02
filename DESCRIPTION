@@ -9,7 +9,7 @@ Description: This package can download and retrieve daily data on air quality in
     from any of the stations maintained by 'Consejeria de Medio Ambiente' (http://bit.ly/airedata).
     The data are formatted so that they can be directly analysed with the 'openair' package.
 URL: https://github.com/SevillaR/aire
-License: MIT
+License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Depends:
