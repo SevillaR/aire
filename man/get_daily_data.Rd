@@ -7,9 +7,9 @@
 get_daily_data(date, province)
 }
 \arguments{
-\item{fecha}{Character vector with date in formart "yyyy-mm-dd" (see examples).}
+\item{date}{Character vector with date in formart "yyyy-mm-dd" (see examples).}
 
-\item{provincia}{Character. Two first letters of province name.}
+\item{province}{Character. Two first letters of province name.}
 }
 \value{
 List of characters with http addresses.

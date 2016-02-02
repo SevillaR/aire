@@ -8,15 +8,14 @@ url_path <- function(date, province){
 
   paste0("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
          meses[mes], format(as.Date(date), "%y"), "/n", tolower(province),
-         format(as.Date(date), "%y%m%d", ".htm")
-  )
+         format(as.Date(date), "%y%m%d"), ".htm")
 
 }
 
 #' Get daily data for given dates and province(s)
 #'
-#' @param fecha Character vector with date in formart "yyyy-mm-dd" (see examples).
-#' @param provincia Character. Two first letters of province name.
+#' @param date Character vector with date in formart "yyyy-mm-dd" (see examples).
+#' @param province Character. Two first letters of province name.
 #'
 #' @return List of characters with http addresses.
 #' @export
