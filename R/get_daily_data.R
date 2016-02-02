@@ -1,39 +1,44 @@
-#### url_path: Get http address of daily reports ####
-
-url_path <- function(date, province){
-
-  meses <- c("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
-
-  mes <- lubridate::month(date)
-
-  paste0("http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/",
-         meses[mes], format(as.Date(date), "%y"), "/n", tolower(province),
-         format(as.Date(date), "%y%m%d"), ".htm")
-
-}
-
-#' Get daily data for given dates and province(s)
+#' Get daily air pollution data for given dates and province
 #'
-#' @param date Character vector with date in formart "yyyy-mm-dd" (see examples).
-#' @param province Character. Two first letters of province name.
+#' @param dates Character vector with one or multiple dates formatted as "yyyy-mm-dd" (see examples). Alternatively, use \code{from} and \code{to}.
+#' @param from Character. Starting date, with format "yyyy-mm-dd".
+#' @param to Character. Last date required, with same format as above.
+#' @param province Character. The first two letters of province name.
 #'
-#' @return List of characters with http addresses.
+#' @return A dataframe, suitable to be used directly in \code{\link{openair}} package.
 #' @export
 #' @importFrom lubridate month
-#' @author F. Rodriguez-Sanchez, V. Luque
+#' @import rvest
+#' @importFrom httr http_error
+#'
 #'
 #' @examples
+#' \dontrun{
+#' dataset <- get_daily_data("2015-01-28", province = "gr")
 #'
-#' get_daily_data("2015-01-28", "gr")
+#' dataset <- get_daily_data("2015-01-03", "MA")
 #'
-#' get_daily_data("2015-01-03", "MA")
+#' dataset <- get_daily_data("2015-01-03", "Se")
 #'
-#' get_daily_data("2015-01-03", "Se")
+#' dataset <- get_daily_data(c("2015-01-28", "2015-01-29"), "se")
 #'
-#' get_daily_data(c("2015-01-28", "2015-01-29"), c("se", "gr"))
-#'
-get_daily_data <- Vectorize(url_path, vectorize.args = c("date"),
-                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+#' dataset <- get_daily_data(province = "se", from = "2015-01-10", to = "2015-01-15")
+#' }
+
+get_daily_data <- function(dates, province, from, to){
+
+  if (missing(dates)) {
+    dates <- seq(as.Date(from), as.Date(to), by = 1)
+  }
+
+  data.list <- lapply(dates, process_report, prov = province)
+  data.df <- do.call(rbind.data.frame, data.list)
+
+  if (!nrow(dataset) > 0) stop ("There is no available data for the specified dates and province.")
+
+  return(data.df)
+
+}
 
 
 

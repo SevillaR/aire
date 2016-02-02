@@ -2,33 +2,36 @@
 % Please edit documentation in R/get_daily_data.R
 \name{get_daily_data}
 \alias{get_daily_data}
-\title{Get daily data for given dates and province(s)}
+\title{Get daily air pollution data for given dates and province}
 \usage{
-get_daily_data(date, province)
+get_daily_data(dates, province, from, to)
 }
 \arguments{
-\item{date}{Character vector with date in formart "yyyy-mm-dd" (see examples).}
+\item{dates}{Character vector with one or multiple dates formatted as "yyyy-mm-dd" (see examples). Alternatively, use \code{from} and \code{to}.}
 
-\item{province}{Character. Two first letters of province name.}
+\item{province}{Character. The first two letters of province name.}
+
+\item{from}{Character. Starting date, with format "yyyy-mm-dd".}
+
+\item{to}{Character. Last date required, with same format as above.}
 }
 \value{
-List of characters with http addresses.
+A dataframe, suitable to be used directly in \code{\link{openair}} package.
 }
 \description{
-Get daily data for given dates and province(s)
+Get daily air pollution data for given dates and province
 }
 \examples{
+\dontrun{
+dataset <- get_daily_data("2015-01-28", province = "gr")
 
-get_daily_data("2015-01-28", "gr")
+dataset <- get_daily_data("2015-01-03", "MA")
 
-get_daily_data("2015-01-03", "MA")
+dataset <- get_daily_data("2015-01-03", "Se")
 
-get_daily_data("2015-01-03", "Se")
+dataset <- get_daily_data(c("2015-01-28", "2015-01-29"), "se")
 
-get_daily_data(c("2015-01-28", "2015-01-29"), c("se", "gr"))
-
+dataset <- get_daily_data(province = "se", from = "2015-01-10", to = "2015-01-15")
 }
-\author{
-F. Rodriguez-Sanchez, V. Luque
 }
 
