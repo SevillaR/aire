@@ -1,0 +1,56 @@
+---
+title: "Air quality in Sevilla in 2015"
+author: "Francisco Rodriguez-Sanchez"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Air quality in Sevilla in 2015}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(aire)
+```
+
+# 1. Download data
+
+```{r eval=FALSE}
+se2015 <- get_daily_data(province = "se", from = "2015-01-01", to = "2015-12-31")
+# NB: downloading a whole year takes a while... ca. 20 minutes
+
+save(se2015, file = "data/se2015.rda")
+
+```
+
+
+# 2. Load data
+
+```{r}
+load("data/se2015.rda")
+```
+
+
+
+# Openair
+
+```{r}
+library(openair)
+summaryPlot(se2015)
+
+summaryPlot(se2015[se2015$site == "TORNEO", ])
+
+summaryPlot(se2015, pollutant = "O3")
+```
+
+
+
+
+timePlot
+```{r}
+timePlot(se2015[se2015$site == "TORNEO", ])
+```
+
+calendarPlot
+
+GoogleMapsPlot

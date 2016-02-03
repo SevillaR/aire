@@ -11,6 +11,7 @@ Description: This package can download and retrieve daily data on air quality in
     are collected automatically, and not validated. Check out Consejeria de Medio Ambiente website for monthly
     and annual reports based on validated data.
 URL: https://github.com/SevillaR/aire
+BugReports: https://github.com/SevillaR/aire/issues
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
@@ -22,4 +23,7 @@ Imports:
     rvest
 Suggests:
     openair,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
