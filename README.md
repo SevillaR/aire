@@ -28,4 +28,4 @@ mydata <- get_daily_data(province = "se", from = "2015-01-20", to = "2015-01-25"
 ```
 
 
-See vignette here.
+See vignette [here](https://www.dropbox.com/s/xaiowvvst3gstmy/Sevilla_2015.html?dl=0).
