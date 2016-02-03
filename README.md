@@ -1,11 +1,30 @@
-# aire: análisis de la calidad del aire en Andalucia
+# aire: grab data on air pollution in Andalusia (Spain)
 
 [![Build Status](https://travis-ci.org/SevillaR/aire.svg?branch=master)](https://travis-ci.org/SevillaR/aire)
 [![Coverage Status](https://img.shields.io/codecov/c/github/SevillaR/aire/master.svg)](https://codecov.io/github/SevillaR/aire?branch=master)
 
-Un proyecto de SevillaR
+A project from [SevillaR](http://sevillarusers.wordpress.com).
 
-Acceso a los datos: http://www.juntadeandalucia.es/medioambiente/site/portalweb/menuitem.7e1cf46ddf59bb227a9ebe205510e1ca/?vgnextoid=7e612e07c3dc4010VgnVCM1000000624e50aRCRD&vgnextchannel=3b43de552afae310VgnVCM2000000624e50aRCRD#apartadoce217adf12be4010VgnVCM1000000624e50a____
+This package can download and retrieve daily data on air quality in Andalusia (Spain), from any of the stations maintained by 'Consejeria de Medio Ambiente' (http://bit.ly/airedata). The data are formatted so that they can be directly analysed with the [openair](https://cran.r-project.org/web/packages/openair/index.html) package. Note these data are collected automatically, and not validated. Check out Consejeria de Medio Ambiente website for monthly and annual reports based on validated data.
 
-Datos de ejemplo: http://www.juntadeandalucia.es/medioambiente/atmosfera/informes_siva/ene15/nse150129.htm
+
+## Installation
+
+```
+library(devtools)
+install_github("SevillaR/aire")
+```
+
+
+## Examples
+
+```
+mydata <- get_daily_data("2015-01-29", province = "se")
+
+mydata <- get_daily_data(c("2015-01-29", "2015-01-30"), "se")
+
+mydata <- get_daily_data(province = "se", from = "2015-01-20", to = "2015-01-25")
+
+```
+
 
