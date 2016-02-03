@@ -22,7 +22,7 @@ get_html <- function(url){
   if (!is.character(url) | length(url) != 1)
     stop("http address must be a character")
 
-  if (!http_error(url)) return(rvest::html(url, encoding = "ISO-8859-1")) else return(NULL)
+  if (!http_error(url)) return(xml2::read_html(url, encoding = "ISO-8859-1")) else return(NULL)
 
 }
 

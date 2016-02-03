@@ -20,10 +20,12 @@ Depends:
 Imports:
     httr,
     lubridate,
-    rvest
+    rvest,
+    xml2
 Suggests:
     openair,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    sp
 VignetteBuilder: knitr

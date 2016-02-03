@@ -5,7 +5,7 @@
 
 A project from [SevillaR](http://sevillarusers.wordpress.com).
 
-This package can download and retrieve daily data on air quality in Andalusia (Spain), from any of the stations maintained by 'Consejeria de Medio Ambiente' (http://bit.ly/airedata). The data are formatted so that they can be directly analysed with the [openair](https://cran.r-project.org/web/packages/openair/index.html) package. Note these data are collected automatically, and not validated. Check out Consejeria de Medio Ambiente website for monthly and annual reports based on validated data.
+This package can download and retrieve daily data on air quality in Andalusia (Spain), from any of the stations maintained by 'Consejeria de Medio Ambiente' (http://bit.ly/airedata). The data are formatted to be directly analysed with the [openair](https://cran.r-project.org/web/packages/openair/index.html) package. Note these data are collected automatically and *not validated*. Check out Consejeria de Medio Ambiente website for monthly and annual reports based on validated data.
 
 
 ## Installation
@@ -28,3 +28,4 @@ mydata <- get_daily_data(province = "se", from = "2015-01-20", to = "2015-01-25"
 ```
 
 
+See vignette here.

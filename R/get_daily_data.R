@@ -10,6 +10,7 @@
 #' @importFrom lubridate month
 #' @import rvest
 #' @importFrom httr http_error
+#' @importFrom xml2 read_html
 #'
 #'
 #' @examples
