@@ -22,7 +22,7 @@ get_html <- function(url){
   if (!is.character(url) | length(url) != 1)
     stop("http address must be a character")
 
-  if (!http_error(url)) return(read_html(url, encoding = "ISO-8859-1")) else return(NULL)
+  if (!http_error(url)) return(rvest::html(url, encoding = "ISO-8859-1")) else return(NULL)
 
 }
 
@@ -31,6 +31,8 @@ get_html <- function(url){
 ##### Scrape data from html tables #####
 
 scrape_html <- function(html_obj){
+
+  require(rvest)
 
   if (!is.null(html_obj)){
 

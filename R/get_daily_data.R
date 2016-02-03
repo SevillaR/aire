@@ -34,7 +34,7 @@ get_daily_data <- function(dates, province, from, to){
   data.list <- lapply(dates, process_report, prov = province)
   data.df <- do.call(rbind.data.frame, data.list)
 
-  if (!nrow(dataset) > 0) stop ("There is no available data for the specified dates and province.")
+  if (!nrow(data.df) > 0) stop ("There is no available data for the specified dates and province.")
 
   return(data.df)
 
