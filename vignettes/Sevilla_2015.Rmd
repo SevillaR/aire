@@ -1,19 +1,29 @@
 ---
-title: "Air quality in Sevilla in 2015"
+title: "aire example - Air quality in Sevilla in 2015"
 author: "Francisco Rodriguez-Sanchez"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 7
 vignette: >
-  %\VignetteIndexEntry{Air quality in Sevilla in 2015}
+  %\VignetteIndexEntry{aire example - Air quality in Sevilla in 2015}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+
+```{r echo=FALSE}
+library(knitr)
+opts_knit$set(root.dir=normalizePath('../'))
+opts_chunk$set(warning = FALSE, message = FALSE)
+```
 
 ```{r}
 library(aire)
 ```
 
-# 1. Download data
+# Download data
 
 ```{r eval=FALSE}
 se2015 <- get_daily_data(province = "se", from = "2015-01-01", to = "2015-12-31")
@@ -24,33 +34,64 @@ save(se2015, file = "data/se2015.rda")
 ```
 
 
-# 2. Load data
+# Load data
 
 ```{r}
-load("data/se2015.rda")
+data(se2015)
+head(se2015)
 ```
 
 
-
-# Openair
+# Now analyse with `openair` package
 
 ```{r}
 library(openair)
-summaryPlot(se2015)
+```
+
+
+## summaryPlot
+
+```{r}
+
+summaryPlot(se2015, pollutant = "SO2")
+
+summaryPlot(se2015, pollutant = "O3")
 
 summaryPlot(se2015[se2015$site == "TORNEO", ])
 
-summaryPlot(se2015, pollutant = "O3")
 ```
 
 
 
 
-timePlot
+## timePlot
+
 ```{r}
-timePlot(se2015[se2015$site == "TORNEO", ])
+timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 ```
 
-calendarPlot
 
-GoogleMapsPlot
+
+## calendarPlot
+
+```{r}
+calendarPlot(se2015[se2015$site == "TORNEO", ], pollutant = "O3")
+```
+
+
+## GoogleMapsPlot
+
+To make a map we need to load stations location info first:
+
+```{r}
+data(stations)
+head(stations)
+
+se2015 <- merge(se2015, stations[,"site"], by = "site", all.x = TRUE)
+```
+
+```{r eval=FALSE}
+GoogleMapsPlot(se2015, pollutant = "NO2")
+# experimental yet, may give problems
+```
+
