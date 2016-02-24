@@ -64,7 +64,7 @@ timePlot(datos, pollutant = "PART", type = "site")
 
 ![](nubepolvo_figuras/timePlot-1.png)
 
-Vemos que el pico de contaminación por partículas se produjo entre el 20 y 22 de Febrero, y que se alcanzaron valores de hasta 50 microgramos por metro cúbico de aire, cuando los valores normales están por debajo de 25 microgramos (http://bit.ly/airedata).
+Vemos que el pico de contaminación por partículas se produjo entre el 20 y 22 de Febrero, y que se alcanzaron valores de **hasta 500 microgramos por metro cúbico** de aire, cuando los valores normales están por debajo de 25 microgramos (http://bit.ly/airedata).
 
 
 También podemos hacer un `calendarPlot`:
