@@ -42,6 +42,6 @@ may8 <- get_daily_data("2015-05-08", province = "se")
 data(stations)
 may8sp <- merge(may8, stations[, "site"], by = "site", all.x = TRUE)
 
-## ----map-----------------------------------------------------------------
-GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
+## ----map, eval=FALSE-----------------------------------------------------
+#  GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
 

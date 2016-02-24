@@ -5,7 +5,7 @@
 #' @param to Character. Last date required, with same format as above.
 #' @param province Character. The first two letters of province name.
 #'
-#' @return A dataframe, suitable to be used directly in \code{\link[openair]} package.
+#' @return A dataframe, suitable to be used directly in \pkg{openair} package.
 #' @export
 #' @importFrom lubridate month
 #' @import rvest

@@ -27,6 +27,6 @@ datos.21 <- get_daily_data("2016-02-21", "se")
 data(stations)
 datos.21.sp <- merge(datos.21, stations[, "site"], by = "site", all.x = TRUE)
 
-## ----map-----------------------------------------------------------------
-GoogleMapsPlot(datos.21.sp, pollutant = "PART")  
+## ----map, eval=FALSE-----------------------------------------------------
+#  GoogleMapsPlot(datos.21.sp, pollutant = "PART")
 
