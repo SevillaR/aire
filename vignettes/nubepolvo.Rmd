@@ -49,14 +49,14 @@ library(openair)
 
 Con la función `summaryPlot` podemos inspeccionar los datos:
 
-```{r summaryPlot}
+```{r summaryPlot, fig.width=8}
 summaryPlot(datos, pollutant = "PART", period = "months")
 ```
 
 ![](nubepolvo_figuras/summaryPlot-1.png)
 
 
-La función `timePlot` nos dibuja la serie temporal más claramente:
+La función `timePlot` nos dibuja la serie temporal para cada estación más claramente:
 
 ```{r timePlot}
 timePlot(datos, pollutant = "PART", type = "site")
@@ -64,7 +64,7 @@ timePlot(datos, pollutant = "PART", type = "site")
 
 ![](nubepolvo_figuras/timePlot-1.png)
 
-Vemos que el pico de contaminación por partículas se produjo entre el 20 y 22 de Febrero.
+Vemos que el pico de contaminación por partículas se produjo entre el 20 y 22 de Febrero, y que se alcanzaron valores de hasta 50 microgramos por metro cúbico de aire, cuando los valores normales están por debajo de 25 microgramos (http://bit.ly/airedata).
 
 
 También podemos hacer un `calendarPlot`:
@@ -76,7 +76,9 @@ calendarPlot(datos, pollutant = "PART")
 ![](nubepolvo_figuras/calendarPlot-1.png)
 
 
-Este es el mapa de la concentración de partículas por estaciones para el día de mayor contaminación:
+Finalmente hacemos un mapa de la concentración de partículas por estaciones para el día de mayor contaminación (21 de Febrero).
+
+Primero descargamos y preparamos los datos:
 
 ```{r}
 datos.21 <- get_daily_data("2016-02-21", "se")
@@ -84,10 +86,14 @@ data(stations)
 datos.21.sp <- merge(datos.21, stations[, "site"], by = "site", all.x = TRUE)
 ```
 
-Now make the map:
+Y luego hacemos el mapa:
 
 ```{r map, eval=FALSE}
 GoogleMapsPlot(datos.21.sp, pollutant = "PART")  
 ```
 
 ![](nubepolvo_figuras/map-1.png)
+
+
+Se puede observar que aunque la densidad de partículas fue muy alta en toda la zona, hubo estaciones (como la de la Sierra Norte) con valores algo mejores.
+
