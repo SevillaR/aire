@@ -2,6 +2,7 @@
 library(knitr)
 opts_knit$set(root.dir=normalizePath('../'))
 opts_chunk$set(warning = FALSE, message = FALSE)
+opts_chunk$set(fig.path = "Sevilla_2015_figuras/", fig.show="hide")
 
 ## ------------------------------------------------------------------------
 library(aire)
@@ -14,34 +15,33 @@ library(aire)
 #  
 
 ## ------------------------------------------------------------------------
-data(se2015)
+load("data/se2015.rda")
 head(se2015)
 
 ## ------------------------------------------------------------------------
 library(openair)
 
-## ------------------------------------------------------------------------
+## ----summaryPlot_SO2-----------------------------------------------------
 
 summaryPlot(se2015, pollutant = "SO2")
 
+## ----summaryPlot_O3------------------------------------------------------
 summaryPlot(se2015, pollutant = "O3")
 
+## ----summaryPlot_Torneo--------------------------------------------------
 summaryPlot(se2015[se2015$site == "TORNEO", ])
 
-
-## ------------------------------------------------------------------------
+## ----timePlot------------------------------------------------------------
 timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 
-## ------------------------------------------------------------------------
+## ----calendarPlot--------------------------------------------------------
 calendarPlot(se2015[se2015$site == "TORNEO", ], pollutant = "O3")
 
 ## ------------------------------------------------------------------------
+may8 <- get_daily_data("2015-05-08", province = "se")
 data(stations)
-head(stations)
+may8sp <- merge(may8, stations[, "site"], by = "site", all.x = TRUE)
 
-se2015 <- merge(se2015, stations[,"site"], by = "site", all.x = TRUE)
-
-## ----eval=FALSE----------------------------------------------------------
-#  GoogleMapsPlot(se2015, pollutant = "NO2")
-#  # experimental yet, may give problems
+## ----map-----------------------------------------------------------------
+GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
 
