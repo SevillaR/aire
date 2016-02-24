@@ -16,7 +16,7 @@ install_github("SevillaR/aire")
 ```
 
 
-## Examples
+## Getting the data
 
 ```
 mydata <- get_daily_data("2015-01-29", province = "se")
@@ -27,5 +27,9 @@ mydata <- get_daily_data(province = "se", from = "2015-01-20", to = "2015-01-25"
 
 ```
 
+## Examples 
 
-See vignette [here](https://www.dropbox.com/s/xaiowvvst3gstmy/Sevilla_2015.html?dl=0).
+- [Air quality analysis in Sevilla during 2015](http://sevillar.github.io/aire/Sevilla_2015.html)
+
+- [Analysis of an intense sand storm event in Sevilla - February 2016](http://sevillar.github.io/aire/nubepolvo.html)
+
