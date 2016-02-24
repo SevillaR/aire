@@ -17,7 +17,7 @@ vignette: >
 library(knitr)
 opts_knit$set(root.dir=normalizePath('../'))
 opts_chunk$set(warning = FALSE, message = FALSE)
-opts_chunk$set(fig.path = "Sevilla_2015_figuras/")
+opts_chunk$set(fig.path = "Sevilla_2015_figuras/", fig.show="hide")
 ```
 
 ```{r}
@@ -52,15 +52,24 @@ library(openair)
 
 ## summaryPlot
 
-```{r summaryPlot}
+```{r summaryPlot_SO2}
 
 summaryPlot(se2015, pollutant = "SO2")
-
-summaryPlot(se2015, pollutant = "O3")
-
-summaryPlot(se2015[se2015$site == "TORNEO", ])
-
 ```
+
+![](Sevilla_2015_figuras/summaryPlot_SO2-1.png)
+
+```{r summaryPlot_O3}
+summaryPlot(se2015, pollutant = "O3")
+```
+
+![](Sevilla_2015_figuras/summaryPlot_O3-1.png)
+
+```{r summaryPlot_Torneo}
+summaryPlot(se2015[se2015$site == "TORNEO", ])
+```
+
+![](Sevilla_2015_figuras/summaryPlot_Torneo-1.png)
 
 
 
@@ -71,6 +80,8 @@ summaryPlot(se2015[se2015$site == "TORNEO", ])
 timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 ```
 
+![](Sevilla_2015_figuras/timePlot-1.png)
+
 
 
 ## calendarPlot
@@ -78,6 +89,8 @@ timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 ```{r calendarPlot}
 calendarPlot(se2015[se2015$site == "TORNEO", ], pollutant = "O3")
 ```
+
+![](Sevilla_2015_figuras/calendarPlot-1.png)
 
 
 ## GoogleMapsPlot
@@ -96,3 +109,4 @@ Now make the map:
 GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
 ```
 
+![](Sevilla_2015_figuras/map-1.png)
