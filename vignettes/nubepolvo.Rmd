@@ -86,7 +86,7 @@ datos.21.sp <- merge(datos.21, stations[, "site"], by = "site", all.x = TRUE)
 
 Now make the map:
 
-```{r map, echo=FALSE}
+```{r map, eval=FALSE}
 GoogleMapsPlot(datos.21.sp, pollutant = "PART")  
 ```
 
