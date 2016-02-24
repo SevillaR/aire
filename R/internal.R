@@ -32,8 +32,6 @@ get_html <- function(url){
 
 scrape_html <- function(html_obj){
 
-  require(rvest)
-
   if (!is.null(html_obj)){
 
     n_estaciones <- (length(rvest::html_nodes(html_obj, "table"))-1)/2
