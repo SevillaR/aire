@@ -105,7 +105,7 @@ may8sp <- merge(may8, stations[, "site"], by = "site", all.x = TRUE)
 
 Now make the map:
 
-```{r map}
+```{r map, echo=FALSE}
 GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
 ```
 
