@@ -16,7 +16,7 @@ get_daily_data(dates, province, from, to)
 \item{to}{Character. Last date required, with same format as above.}
 }
 \value{
-A dataframe, suitable to be used directly in \code{\link{openair}} package.
+A dataframe, suitable to be used directly in \code{\link[openair]} package.
 }
 \description{
 Get daily air pollution data for given dates and province
