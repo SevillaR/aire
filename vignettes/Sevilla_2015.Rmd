@@ -17,6 +17,7 @@ vignette: >
 library(knitr)
 opts_knit$set(root.dir=normalizePath('../'))
 opts_chunk$set(warning = FALSE, message = FALSE)
+opts_chunk$set(fig.path = "Sevilla_2015_figuras/")
 ```
 
 ```{r}
@@ -37,7 +38,7 @@ save(se2015, file = "data/se2015.rda")
 # Load data
 
 ```{r}
-data(se2015)
+load("data/se2015.rda")
 head(se2015)
 ```
 
@@ -51,7 +52,7 @@ library(openair)
 
 ## summaryPlot
 
-```{r}
+```{r summaryPlot}
 
 summaryPlot(se2015, pollutant = "SO2")
 
@@ -66,7 +67,7 @@ summaryPlot(se2015[se2015$site == "TORNEO", ])
 
 ## timePlot
 
-```{r}
+```{r timePlot}
 timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 ```
 
@@ -74,24 +75,24 @@ timePlot(se2015[se2015$site == "TORNEO", ], pollutant = c("SO2", "NO2", "O3"))
 
 ## calendarPlot
 
-```{r}
+```{r calendarPlot}
 calendarPlot(se2015[se2015$site == "TORNEO", ], pollutant = "O3")
 ```
 
 
 ## GoogleMapsPlot
 
-To make a map we need to load stations location info first:
+Let's map data for e.g. 2015-05-08. First we download the data, and merge it with info on stations location:
 
 ```{r}
+may8 <- get_daily_data("2015-05-08", province = "se")
 data(stations)
-head(stations)
-
-se2015 <- merge(se2015, stations[,"site"], by = "site", all.x = TRUE)
+may8sp <- merge(may8, stations[, "site"], by = "site", all.x = TRUE)
 ```
 
-```{r eval=FALSE}
-GoogleMapsPlot(se2015, pollutant = "NO2")
-# experimental yet, may give problems
+Now make the map:
+
+```{r map}
+GoogleMapsPlot(may8sp, pollutant = "NO2")  # experimental yet, may give problems
 ```
 
