@@ -1,8 +1,8 @@
 Package: aire
 Type: Package
 Title: Grab data on air pollution in Andalusia (Spain)
-Version: 0.0.1
-Date: 2016-02-03
+Version: 0.0.2
+Date: 2016-09-19
 Author: Francisco Rodriguez-Sanchez, Francisco Viciana, Francisco Balao, Virginia Luque, Rocio Aguilar
 Maintainer: Francisco Rodriguez-Sanchez <f.rodriguez.sanc@gmail.com>
 Description: This package can download and retrieve daily data on air quality in Andalusia (Spain),

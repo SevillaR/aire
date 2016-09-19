@@ -42,13 +42,13 @@ scrape_html <- function(html_obj){
 
       ## read station info
       id <- html_table(html_nodes(html_obj, "table")[i*2], fill = TRUE, header = FALSE)[[1]]
-      id2 <- data.frame(substring(t(id[,2]), 3), stringsAsFactors = FALSE)  ## eliminar espacios al comienzo
+      id2 <- data.frame(substring(t(id[,2]), 2), stringsAsFactors = FALSE)  ## eliminar espacios al comienzo
       names(id2) <- id[, 1]  # use english names?
 
       ## read station data
       df <- html_table(html_nodes(html_obj, "table")[i*2+1], fill = TRUE, header = TRUE)[[1]]
       df <- df[-nrow(df), ]  # last row is always text
-      df <- df[, c(TRUE, sapply(df[, -1], is.numeric))]  # delete columns without data
+      df <- df[, c(TRUE, sapply(df[, -1], function(x) all(!is.na(x))))]  # delete columns without data
 
       ## Hay estaciones sin ninguna medición en el dia: e.g. Campillos (Malaga:27-1-2015)
 
